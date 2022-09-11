@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.*;
 
 /*
@@ -15,13 +17,12 @@ import java.util.*;
 */
 
 public class Lab_2_23 {
-    public static void main(String[] args) {
-        int[][] matr = {{20, 100, 12, 11, 10, 100, 4},
-                {32, 100, 13, 100, 9, 100, 3},
-                {18, 100, 14, 100, 8, 100, 4},
-                {17, 16, 15, 100, 7, 6, 5},
+    public static void main(String[] args) throws FileNotFoundException {
+        int[][] matr = {
+                {5 , 1},
+                {2, 3}
         };
-        System.out.println(max_of_local_mins(matr));
+        System.out.println(max_of_local_mins(get_matrix_form_file()));
 
 
     }
@@ -45,7 +46,7 @@ public class Lab_2_23 {
 
     }
 
-    public static int max_of_local_mins(int[][] my_matrix) {
+    public static String max_of_local_mins(int[][] my_matrix) {
         ArrayList<Integer> locals = new ArrayList<Integer>();
         for (int i = 0; i < my_matrix.length; i++) {
             for (int j = 0; j < my_matrix[i].length; j++) {
@@ -55,7 +56,108 @@ public class Lab_2_23 {
             }
         }
         Collections.sort(locals);
-        return locals.get(locals.size() - 1);
+        int max = locals.get(locals.size() - 1);
+        StringBuilder result = new StringBuilder(Integer.toString(max));
+        result.append(" ");
+        for (int i = 0; i < my_matrix.length; i++) {
+            for (int j = 0; j < my_matrix[i].length; j++) {
+                if (Is_local_min(i, j, my_matrix) && max == my_matrix[i][j]) {
+                    result.append(Integer.toString(i));
+                    result.append("|");
+                    result.append(Integer.toString(j));
+                    result.append(" ");
+                }
+            }
+        }
+        return result.toString();
+    }
+
+//    public static boolean Is_local_min(int i, int j, int[][] my_matrix) {
+//        int tmp_value = my_matrix[i][j];
+//        if (tmp_value > my_matrix[i - 1][j]) {
+//            return false;
+//        }
+//        if (tmp_value > my_matrix[i][j - 1]) {
+//            return false;
+//        }
+//        if (tmp_value > my_matrix[i + 1][j]) {
+//            return false;
+//        }
+//        if (tmp_value > my_matrix[i][j + 1]) {
+//            return false;
+//        }
+//
+//        return true;
+//
+//    }
+//
+//    public static String max_of_local_mins(int[][] my_matrix) {
+//        int rows = my_matrix.length;
+//        int columns = my_matrix[0].length;
+//        if (rows % 2 == 1) {
+//            rows = rows * 2 + 1;
+//        } else {
+//            rows *= 2;
+//        }
+//        if (columns % 2 == 1) {
+//            columns = columns * 2 + 1;
+//        } else {
+//            columns *= 2;
+//        }
+//
+//        int[][] surrounding_matrix = new int[rows][columns];
+//        for (int i = 0; i < rows; i++){
+//            for (int j = 0; j < columns; j++){
+//                if ( i == 0 || j == 0 || i == rows - 1 || j == columns - 1){
+//                    surrounding_matrix[i][j] = -2147483648;
+//                }
+//                else {
+//                    surrounding_matrix[i][j] = my_matrix[i - 1][j - 1];
+//                }
+//            }
+//        }
+//
+//        ArrayList<Integer> locals = new ArrayList<Integer>();
+//        for (int i = 1; i < surrounding_matrix.length - 1; i++) {
+//            for (int j = 1; j < surrounding_matrix[i].length - 1; j++) {
+//                if (Is_local_min(i, j, surrounding_matrix)) {
+//                    locals.add(surrounding_matrix[i][j]);
+//                }
+//            }
+//        }
+//        Collections.sort(locals);
+//        int max = locals.get(locals.size() - 1);
+//        StringBuilder final_ = new StringBuilder(Integer.toString(max));
+//        final_.append(" ");
+//
+//        for (int i = 0; i < surrounding_matrix.length; i++) {
+//            for (int j = 0; j < surrounding_matrix[i].length; j++) {
+//                if (Is_local_min(i, j, surrounding_matrix) && surrounding_matrix[i][j] == max ) {
+//                    final_.append(Integer.toString(i));
+//                    final_.append("|");
+//                    final_.append(Integer.toString(j));
+//                    final_.append(" ");
+//                }
+//            }
+//        }
+//        return final_.toString();
+//    }
+
+    public static int[][] get_matrix_form_file() throws FileNotFoundException {
+        FileReader fr = new FileReader("/home/e/IdeaProjects/Matrix_lab_2/src/get_MATRIX.txt");
+        Scanner sc = new Scanner(fr);
+        int n;
+        int m;
+        n = sc.nextInt();
+        m = sc.nextInt();
+        int[][] matrix = new int[n][m];
+        for (var i : matrix) {
+            for (int j = 0; j < m; j++) {
+                i[j] = sc.nextInt();
+            }
+
+        }
+        return matrix;
     }
 
 }

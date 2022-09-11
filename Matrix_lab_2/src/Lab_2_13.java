@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.*;
 
 /*
@@ -16,11 +18,11 @@ import java.util.*;
 
 
 public class Lab_2_13 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException{
         int[][] matr = {
-                {32, 4, 1, 4, 6},
+                {32, 4, 31, 4, 6},
                 {2, 2, 2, 8, 6},
-                {3, 8, 3, 6, 32},
+                {3, 8, 3, 6, 31},
                 {1, 2, 3, 4, 6}
         };
         System.out.println(max_repeated(matr));
@@ -34,24 +36,42 @@ public class Lab_2_13 {
                 my_array.add(matrix);
             }
         }
-        Collections.sort(my_array);
-        ArrayList<Integer> new_array = new ArrayList<Integer>();
-        for (var i = 0; i < my_array.size(); i++) {
-            var count = 0;
-            for (Integer integer : my_array) {
-                if (Objects.equals(my_array.get(i), integer)) {
-                    count++;
-                }
-            }
-            if (count >= 2) {
+        my_array.sort(Collections.reverseOrder());
 
-                new_array.add(my_array.get(i));
+        Map<Integer, Integer> count_info = new LinkedHashMap<Integer, Integer>(); // maintainces the adding order
+        for (var number : my_array) {
+            if (count_info.containsKey(number)) {
+                count_info.put(number, count_info.get(number) + 1);
+            } else {
+                count_info.put(number, 1);
+            }
+        }
+        for (var key : count_info.keySet()) {
+            if (count_info.get(key) != 1) {
+                return key;
             }
         }
 
-        return new_array.get(new_array.size() - 1);
+
+        return -666666;
+    }
 
 
+    public static int[][] get_matrix_form_file() throws FileNotFoundException {
+        FileReader fr = new FileReader("/home/e/IdeaProjects/Matrix_lab_2/src/get_MATRIX.txt");
+        Scanner sc = new Scanner(fr);
+        int n;
+        int m;
+        n = sc.nextInt();
+        m = sc.nextInt();
+        int[][] matrix = new int[n][m];
+        for (var i : matrix) {
+            for (int j = 0; j < m; j++) {
+                i[j] = sc.nextInt();
+            }
+
+        }
+        return matrix;
     }
 
 }
