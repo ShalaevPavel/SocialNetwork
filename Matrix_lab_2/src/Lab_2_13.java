@@ -18,42 +18,39 @@ import java.util.*;
 
 
 public class Lab_2_13 {
-    public static void main(String[] args) throws FileNotFoundException{
+    public static void main(String[] args) throws FileNotFoundException {
         int[][] matr = {
-                {32, 4, 31, 4, 6},
-                {2, 2, 2, 8, 6},
-                {3, 8, 3, 6, 31},
-                {1, 2, 3, 4, 6}
+                {1, 2, 3},
+                {4, 2, 3}
         };
         System.out.println(max_repeated(matr));
 
     }
 
     public static int max_repeated(int[][] my_matrix) {
-        ArrayList<Integer> my_array = new ArrayList<Integer>();
+        HashMap<Integer, Integer> count_info = new HashMap<Integer, Integer>();
+
         for (int[] myMatrix : my_matrix) {
-            for (int matrix : myMatrix) {
-                my_array.add(matrix);
+            for (int key : myMatrix) {
+                if (count_info.containsKey(key)) {
+                    count_info.put(key, count_info.get(key) + 1);
+                } else {
+                    count_info.put(key, 1);
+                }
             }
         }
-        my_array.sort(Collections.reverseOrder());
 
-        Map<Integer, Integer> count_info = new LinkedHashMap<Integer, Integer>(); // maintainces the adding order
-        for (var number : my_array) {
-            if (count_info.containsKey(number)) {
-                count_info.put(number, count_info.get(number) + 1);
-            } else {
-                count_info.put(number, 1);
-            }
-        }
+        int max = -2147483648;
+
+
         for (var key : count_info.keySet()) {
-            if (count_info.get(key) != 1) {
-                return key;
+            if (count_info.get(key) != 1 && key > max) {
+                max = key;
             }
         }
 
 
-        return -666666;
+        return max;
     }
 
 

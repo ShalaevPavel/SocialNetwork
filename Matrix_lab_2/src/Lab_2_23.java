@@ -19,7 +19,7 @@ import java.util.*;
 public class Lab_2_23 {
     public static void main(String[] args) throws FileNotFoundException {
         int[][] matr = {
-                {5 , 1},
+                {5, 1},
                 {2, 3}
         };
         System.out.println(max_of_local_mins(get_matrix_form_file()));
@@ -59,6 +59,18 @@ public class Lab_2_23 {
         int max = locals.get(locals.size() - 1);
         StringBuilder result = new StringBuilder(Integer.toString(max));
         result.append(" ");
+        int counter = 0;
+        int elem = my_matrix[0][0];
+        for (var matr: my_matrix){
+            for (var element: matr){
+                if (element == elem){
+                    counter++;
+                }
+            }
+        }
+        if (counter == my_matrix.length * my_matrix[0].length){
+            return "all are equal";
+        }
         for (int i = 0; i < my_matrix.length; i++) {
             for (int j = 0; j < my_matrix[i].length; j++) {
                 if (Is_local_min(i, j, my_matrix) && max == my_matrix[i][j]) {
