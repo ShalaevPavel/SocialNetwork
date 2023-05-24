@@ -4,26 +4,50 @@ import java.time.LocalDateTime;
 
 public class Post {
     private int id;
-    private int userId; // Foreign key referencing the user who created the post
+    private int userId;
     private String content;
     private LocalDateTime creationTime;
 
-    public String getTitle() {
+    // Constructors
+
+
+    public Post(int id, int userId, String content, LocalDateTime creationTime) {
+        this.id = id;
+        this.userId = userId;
+        this.content = content;
+        this.creationTime = creationTime;
     }
 
-    public String getContent() {
-    }
-
+    // Getters and Setters
     public int getId() {
+        return id;
     }
 
     public void setId(int id) {
+        this.id = id;
     }
 
-    public void setTitle(String title) {
+    public int getUserId() {
+        return userId;
     }
-    // Additional fields such as likes, comments, etc.
 
-    // Constructors, getters, setters, and other methods
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public LocalDateTime getCreationTime() {
+        return creationTime;
+    }
+
+    public void setCreationTime(LocalDateTime creationTime) {
+        this.creationTime = creationTime;
+    }
 }
-
