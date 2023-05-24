@@ -1,32 +1,66 @@
 package by.fpmibsu.network.model;
 
+import java.time.LocalDateTime;
+
 public class FriendRequest {
     private int id;
-    private int senderId;
-    private int receiverId;
-    private String status;
+    private int senderId; // User ID of the sender
+    private int receiverId; // User ID of the receiver
+    private LocalDateTime requestTime;
+    private boolean accepted;
+
+    // Constructors
+    public FriendRequest() {
+    }
+
+    public FriendRequest(int id, int senderId, int receiverId, LocalDateTime requestTime, boolean accepted) {
+        this.id = id;
+        this.senderId = senderId;
+        this.receiverId = receiverId;
+        this.requestTime = requestTime;
+        this.accepted = accepted;
+    }
+
+    // Getters and Setters
+    public int getId() {
+        return id;
+    }
 
     public void setId(int id) {
-    }
-
-    public void setSenderId(int senderId) {
-    }
-
-    public void setReceiverId(int receiverId) {
-    }
-
-    public void setStatus(String status) {
+        this.id = id;
     }
 
     public int getSenderId() {
+        return senderId;
+    }
+
+    public void setSenderId(int senderId) {
+        this.senderId = senderId;
     }
 
     public int getReceiverId() {
+        return receiverId;
     }
 
-    public String getStatus() {
+    public void setReceiverId(int receiverId) {
+        this.receiverId = receiverId;
     }
-    // Other friend request properties, such as creation date, etc.
-    // Getters and setters
+
+    public LocalDateTime getRequestTime() {
+        return requestTime;
+    }
+
+    public void setRequestTime(LocalDateTime requestTime) {
+        this.requestTime = requestTime;
+    }
+
+    public boolean isAccepted() {
+        return accepted;
+    }
+
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
+    }
 }
+
 

@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="142b8f23-2a9c-4538-af59-8e58a9795cc5" name="Changes" comment="">
+
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/fpmibsu/network/entity/Comment.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/by/fpmibsu/network/entity/Follow.java" beforeDir="false" />
@@ -36,6 +37,7 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
+
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -86,4 +88,5 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+
 </project>
