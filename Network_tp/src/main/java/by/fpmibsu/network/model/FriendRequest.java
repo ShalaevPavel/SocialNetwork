@@ -61,6 +61,15 @@ public class FriendRequest {
     public void setAccepted(boolean accepted) {
         this.accepted = accepted;
     }
+
+    public String getStatus() {
+         if (this.accepted){
+             return "accepted";
+        }
+         else {
+             return "not accepted";
+         }
+    }
 }
 
 
