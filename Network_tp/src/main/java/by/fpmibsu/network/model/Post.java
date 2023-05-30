@@ -6,6 +6,7 @@ public class Post {
     private int id;
     private int userId;
     private String content;
+    private String title = "initial";
     private LocalDateTime creationTime;
 
     // Constructors
@@ -16,6 +17,10 @@ public class Post {
         this.userId = userId;
         this.content = content;
         this.creationTime = creationTime;
+    }
+
+    public Post() {
+
     }
 
     // Getters and Setters
@@ -49,5 +54,13 @@ public class Post {
 
     public void setCreationTime(LocalDateTime creationTime) {
         this.creationTime = creationTime;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getTitle() {
+        return this.title;
     }
 }

@@ -29,16 +29,16 @@ public class CommentServlet extends HttpServlet {
         }
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, IOException {
-        // Retrieve comments from the database using the commentController
-        List<Comment> comments = commentController.getCommentById(0);
-
-        // Set the retrieved comments as an attribute in the request
-        request.setAttribute("comments", comments);
-
-        // Forward the request to the comment.jsp view for rendering
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/comment.jsp");
-        dispatcher.forward(request, response);
-    }
+//    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, IOException {
+//        // Retrieve comments from the database using the commentController
+//        List<Comment> comments = commentController.getCommentById(0);
+//
+//        // Set the retrieved comments as an attribute in the request
+//        request.setAttribute("comments", comments);
+//
+//        // Forward the request to the comment.jsp view for rendering
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/comment.jsp");
+//        dispatcher.forward(request, response);
+//    }
 }
 
