@@ -70,6 +70,10 @@ public class FriendRequest {
              return "not accepted";
          }
     }
+
+    public void setStatus(String status) {
+        status = "accepted";
+    }
 }
 
 
