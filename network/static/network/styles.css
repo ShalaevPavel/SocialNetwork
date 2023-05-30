@@ -1,0 +1,83 @@
+.post {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+}
+
+.icon {
+    width: 20px;
+    aspect-ratio: 1/1;
+    color: red;
+}
+
+#new-post-form {
+  margin: 30px 0;
+}
+
+.posts {
+  margin-top: 30px;
+}
+
+.post {
+  font-size: 0.8rem;
+}
+
+.post .content {
+  font-size: 1.2rem;
+  padding: 10px 0;
+}
+
+.post .post-user {
+  font-weight: 800;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.like-post, .edit-post {
+  cursor: pointer;
+  color: black;
+  background: none;
+  border: none;
+  padding: 0 5px;
+}
+
+.edit-post {
+  margin: 0;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.like-post:hover, .like-post:focus, .like-post:active, .edit-post:hover, .edit-post:focus, .edit-post:active {
+  background: none;
+  color: #007bff;
+}
+
+.post-like {
+  display: flex;
+  align-items: center;
+}
+
+span {
+  display: inline-block;
+}
+
+.followers-count {
+  display: flex;
+}
+
+.follow-count {
+  color: #919191;
+  margin-right: 15px;
+}
+
+.follow-count span {
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: black;
+  margin-right: 5px;
+}
+
+#follow-button {
+  margin-bottom: 20px;
+}
