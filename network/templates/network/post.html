@@ -1,0 +1,44 @@
+{% load static %}
+
+<div class="posts">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      {% if posts.has_previous %}
+        <li class="page-item"><a class="page-link" href="{{ request.path }}?page={{ posts.previous_page_number }}">Previous</a></li>
+      {% endif %}
+      {% if posts.has_next %}
+        <li class="page-item"><a class="page-link" href="{{ request.path }}?page={{ posts.next_page_number }}">Next</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% for post in posts.object_list %}
+  <div class="post">
+    <p class="post-user"><a href="{% url 'profile' post.user.username %}">@{{ post.user.username }}</a></p>
+    {% if user.is_authenticated and user == post.user %}
+    <button class="btn btn-primary edit-post" data-id="{{ post.id }}">Edit</button>
+    {% endif %}
+    <p class="content" id="{{ post.id }}">{{ post.content }}</p>
+    <p>{{ post.timestamp }}</p>
+    <p class="post-like">
+      <button class="btn btn-primary like-post" data-id="{{ post.id }}">
+        {% if user.is_authenticated and user in post.likes.all %}
+          <img class="icon" id="like-icon-{{post.id}}" src="{% static 'network/images/heart-2.svg' %}">
+        {% else %}
+          <img class="icon" id="like-icon-{{post.id}}" src="{% static 'network/images/heart-1.svg' %}">
+        {% endif %}
+      </button>
+      <span id="like-count-{{post.id}}">{{ post.likes_count }} likes</span></p>
+  </div>
+  {% endfor %}
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      {% if posts.has_previous %}
+      <li class="page-item"><a class="page-link"
+          href="{% url 'index' %}?page={{ posts.previous_page_number }}">Previous</a></li>
+      {% endif %}
+      {% if posts.has_next %}
+      <li class="page-item"><a class="page-link" href="{% url 'index' %}?page={{ posts.next_page_number }}">Next</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>

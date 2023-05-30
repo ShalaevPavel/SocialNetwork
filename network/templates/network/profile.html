@@ -1,0 +1,24 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block scripts %}
+  <script src="{% static 'network/follow.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+  <h2>@{{ profile_user.username }}</h2>
+  <div class="followers-count">
+    <p class="follow-count"><span id="followers">{{ profile_user.followers_count }}</span>Followers</p>
+    <p class="follow-count"><span id="following">{{ profile_user.following_count }}</span>Following</p>
+  </div>
+  {% if user.is_authenticated %}
+    {% if user != profile_user %}
+      <button class="btn btn-primary" id="follow-button" data-username="{{ profile_user.username }}">{{ button_text }}</button>
+    {% endif %}
+  {% endif %}
+
+  <h2>{{ profile_user.username }}'s Posts</h2>
+  <div>
+    {% include "network/post.html" with posts=posts %}
+  </div>
+{% endblock %}
